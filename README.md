@@ -5,7 +5,7 @@ Add the following repository to project's `composer.json`.
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://gitlab.com/enzaime/dynamic-link.git"
+            "url": "https://github.com/enzaime/dynamic-link.git"
         },
         ....
     ],
