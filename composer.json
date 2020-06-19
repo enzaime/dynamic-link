@@ -1,0 +1,27 @@
+{
+    "name": "enzaime/dynamic-link",
+    "description": "Enzaime Firebase Dynamic Link",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mahbub Rabbani",
+            "email": "mahbub.rucse@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Enzaime\\DynamicLink\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Enzaime\\DynamicLink\\ServiceProvider"
+            ],
+            "aliases": {
+                "EnzDynamicLink": "Enzaime\\DynamicLink\\DynamicLinkFacade"
+            }
+        }
+    }
+}
