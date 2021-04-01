@@ -33,3 +33,7 @@ Using `DynamicLink` Class
     $dLink = new \Enzaime\DynamicLink\DynamicLink();
     $dLink->generate($linkThatYouWantToShare);
 
+### Running Test
+
+    composer update
+    composer test

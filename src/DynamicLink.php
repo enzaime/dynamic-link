@@ -14,7 +14,7 @@ class DynamicLink
      * @param string $suffixOption
      * @return string
      */
-    public function generate(string $link, ?string $domainUriPrefix = null, $suffixOption = "SHORT" )
+    public function generate(string $link, ?string $domainUriPrefix = null, $suffixOption = "SHORT")
     {
         $url = $this->getUrl();
 
@@ -34,16 +34,16 @@ class DynamicLink
 
         $headers = array('Content-Type: application/json');
 
-        $ch = curl_init ();
+        $ch = curl_init();
 
-        curl_setopt ( $ch, CURLOPT_URL, $url );
-        curl_setopt ( $ch, CURLOPT_POST, true );
-        curl_setopt ( $ch, CURLOPT_HTTPHEADER, $headers );
-        curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
-        curl_setopt ( $ch, CURLOPT_POSTFIELDS, json_encode($data) );
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
-        $data = curl_exec ( $ch );
-        curl_close ( $ch );
+        $data = curl_exec($ch);
+        curl_close($ch);
         $response = json_decode($data);
 
         if (isset($response->error)) {

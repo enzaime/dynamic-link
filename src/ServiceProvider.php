@@ -33,6 +33,8 @@ class ServiceProvider extends LaravelProvider
         $this->bindViewComposer();
         $this->publishAssets();
         $this->loadCommands();
+
+        $this->app->bind('enz_dynamic_link', DynamicLink::class);
     }
 
     private function bindViewComposer()
