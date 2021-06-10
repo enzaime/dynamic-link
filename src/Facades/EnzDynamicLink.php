@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @method static void assertGenerateMethodCalled(?int $count = 0)
  * @method static void assertGenerated(string $link)
+ * @method static void assertNotGenerated(string $link)
  * @method static string generate(string $link, ?string $domainUriPrefix = null, $suffixOption = "SHORT")
  *
  * @see \Enzaime\DynamicLink\DynamicLink
