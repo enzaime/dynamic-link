@@ -9,6 +9,7 @@ class DynamicLinkFake
 {
     protected $calledMethods = [];
     
+    protected $links = [];
     /**
      * Generate firebase dynamic link
      *
@@ -21,11 +22,14 @@ class DynamicLinkFake
     public function generate(string $link, ?string $domainUriPrefix = null, $suffixOption = "SHORT")
     {
         $this->calledMethods['generate'] = ($this->calledMethods['generate'] ?? 0) + 1;
+        $this->links[] = $link;
+
+        return $link;
     }
 
     /**
     * Assert if the generate method was called a number of times.
-    * 
+    *
     * @param  int $count
     * @return void
     */
@@ -38,5 +42,27 @@ class DynamicLinkFake
             $actualCounter,
             "EnzDynamicLink::generate method was called $actualCounter times but expected $count."
         );
+    }
+
+    /**
+    * Assert if the generate method was called a number of times.
+    *
+    * @param  int $count
+    * @return void
+    */
+    public function assertGenerated(string $link)
+    {
+        PHPUnit::assertContains($link, $this->links, "$link is not found in generated links.");
+    }
+
+    /**
+    * Assert if the generate method was called a number of times.
+    *
+    * @param  int $count
+    * @return void
+    */
+    public function assertNotGenerated(string $link)
+    {
+        PHPUnit::assertNotContains($link, $this->links, "$link is not found in generated links.");
     }
 }

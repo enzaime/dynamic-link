@@ -33,6 +33,21 @@ Using `DynamicLink` Class
     $dLink = new \Enzaime\DynamicLink\DynamicLink();
     $dLink->generate($linkThatYouWantToShare);
 
+### Assertion
+
+The following assertion methods can be used for the test cases.
+
+    EnzDynamicLink::fake();
+    $link = 'https://enzaime.com';
+
+    EnzDynamicLink::generate($link);
+    
+    EnzDynamicLink::assertGenerateMethodCalled();
+
+    EnzDynamicLink::assertGenerated($link);
+    
+    EnzDynamicLink::assertNotGenerated("$link?test=not-generated");
+
 ### Running Test
 
     composer update

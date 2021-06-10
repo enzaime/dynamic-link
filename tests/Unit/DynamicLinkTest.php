@@ -11,9 +11,14 @@ class DynamicLinkTest extends TestCase
     public function it_test_generate_method_is_called()
     {
         EnzDynamicLink::fake();
+        $link = 'https://enzaime.com';
 
-        EnzDynamicLink::generate('https://enzaime.com');
+        EnzDynamicLink::generate($link);
         
         EnzDynamicLink::assertGenerateMethodCalled();
+
+        EnzDynamicLink::assertGenerated($link);
+        
+        EnzDynamicLink::assertNotGenerated("$link?test=not-generated");
     }
 }
