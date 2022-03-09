@@ -18,6 +18,10 @@ class DynamicLink
     {
         $url = $this->getUrl();
 
+        if (config('dlink.disable_dynamic_link_generation')) {
+            return $link;
+        }
+
         $data = [
             "dynamicLinkInfo" => [
                 "domainUriPrefix" => $this->getDomainUriPrefix($domainUriPrefix),

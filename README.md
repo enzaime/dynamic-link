@@ -22,6 +22,12 @@ Modify the `.env` file to set the credentials;
     FIREBASE_ANDROID_PACKAGE_NAME=
     FIREBASE_IOS_BUNDLE_ID=
 
+### Disable Link generation
+Set the following environment variable to disable link generation:
+
+    DISABLE_DYNAMIC_LINK_GENERATION=true
+    
+
 ### Example
 
 Using Facade
