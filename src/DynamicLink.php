@@ -16,11 +16,11 @@ class DynamicLink
      */
     public function generate(string $link, ?string $domainUriPrefix = null, $suffixOption = "SHORT")
     {
-        $url = $this->getUrl();
-
         if (config('dlink.disable_dynamic_link_generation')) {
             return $link;
         }
+
+        $url = $this->getUrl();
 
         $data = [
             "dynamicLinkInfo" => [
