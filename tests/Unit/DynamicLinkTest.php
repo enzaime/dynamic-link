@@ -14,11 +14,11 @@ class DynamicLinkTest extends TestCase
         $link = 'https://enzaime.com';
 
         EnzDynamicLink::generate($link);
-        
+
         EnzDynamicLink::assertGenerateMethodCalled();
 
         EnzDynamicLink::assertGenerated($link);
-        
+
         EnzDynamicLink::assertNotGenerated("$link?test=not-generated");
     }
 }

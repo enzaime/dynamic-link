@@ -3,8 +3,8 @@
 namespace Enzaime\DynamicLink\Tests;
 
 use Enzaime\DynamicLink\Facades\EnzDynamicLink;
-use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 class TestCase extends OrchestraTestCase
 {
@@ -17,10 +17,10 @@ class TestCase extends OrchestraTestCase
 
     /** @var string */
     protected $userPassword = 'password';
-    
+
     /**
-    * Setup the test environment.
-    */
+     * Setup the test environment.
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -35,12 +35,10 @@ class TestCase extends OrchestraTestCase
      * Define environment setup.
      *
      * @param  \Illuminate\Foundation\Application  $app
-     *
      * @return void
      */
     protected function getEnvironmentSetUp($app)
     {
-
         // $config = $app->make(Repository::class);
 
         // $config->set('auth.defaults.provider', 'users');
@@ -57,7 +55,6 @@ class TestCase extends OrchestraTestCase
      * the config/app.php file.
      *
      * @param  \Illuminate\Foundation\Application  $app
-     *
      * @return array
      */
     protected function getPackageProviders($app)
@@ -74,7 +71,6 @@ class TestCase extends OrchestraTestCase
      * facades upon which your package depends, e.g. Cartalyst/Sentry.
      *
      * @param  \Illuminate\Foundation\Application  $app
-     *
      * @return array
      */
     protected function getPackageAliases($app)
