@@ -2,19 +2,17 @@
 
 namespace Enzaime\DynamicLink;
 
-use Exception;
-
 class DynamicLink
 {
     /**
      * Generate firebase dynamic link
      *
-     * @param string $link
-     * @param string $domainUriPrefix
-     * @param string $suffixOption
+     * @param  string  $link
+     * @param  string  $domainUriPrefix
+     * @param  string  $suffixOption
      * @return string
      */
-    public function generate(string $link, ?string $domainUriPrefix = null, $suffixOption = "SHORT")
+    public function generate(string $link, ?string $domainUriPrefix = null, $suffixOption = 'SHORT')
     {
         if (config('dlink.disable_dynamic_link_generation')) {
             return $link;
@@ -23,20 +21,20 @@ class DynamicLink
         $url = $this->getUrl();
 
         $data = [
-            "dynamicLinkInfo" => [
-                "domainUriPrefix" => $this->getDomainUriPrefix($domainUriPrefix),
-                "link" => $link,
-                "androidInfo" => [
-                    "androidPackageName" => $this->getAndroidPackageName()
+            'dynamicLinkInfo' => [
+                'domainUriPrefix' => $this->getDomainUriPrefix($domainUriPrefix),
+                'link' => $link,
+                'androidInfo' => [
+                    'androidPackageName' => $this->getAndroidPackageName(),
                 ],
-                "iosInfo" => [
-                    "iosBundleId" => $this->getIosBundleId()
+                'iosInfo' => [
+                    'iosBundleId' => $this->getIosBundleId(),
                 ],
             ],
-            "suffix" => ["option" => $suffixOption]
+            'suffix' => ['option' => $suffixOption],
         ];
 
-        $headers = array('Content-Type: application/json');
+        $headers = ['Content-Type: application/json'];
 
         $ch = curl_init();
 
@@ -61,18 +59,18 @@ class DynamicLink
     {
         $domainUriPrefix = $domainUriPrefix ?: config('dlink.firebase_domain_uri_prefix');
 
-        if (!$domainUriPrefix) {
+        if (! $domainUriPrefix) {
             throw new LinkGenerationException('Firebase domain uri prefix can not be null', 400);
         }
 
         return $domainUriPrefix;
     }
-    
+
     private function getApiKey()
     {
         $apiKey = config('dlink.firebase_api_key');
 
-        if (!$apiKey) {
+        if (! $apiKey) {
             throw new LinkGenerationException('Firebase API key is null. Please setup FIREBASE_API_KEY environment variable', 400);
         }
 
@@ -82,8 +80,8 @@ class DynamicLink
     private function getUrl()
     {
         $url = config('dlink.firebase_url');
-        
-        if (!$url) {
+
+        if (! $url) {
             throw new LinkGenerationException('Firebase REST API Url is null. Please setup FIREBASE_URL environment variable', 400);
         }
 
